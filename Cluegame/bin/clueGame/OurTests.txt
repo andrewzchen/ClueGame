@@ -1,0 +1,10 @@
+Authors:
+Andrew Chen
+Jordyn McGrath
+
+The way we thought when we were going through the test was at first and checking for locations
+we did not consider that arrays as a data structure, in particular 2D arrays, start at location (0,0).
+Because of this we needed to increment our get cell method down one in value.  This meant
+that if we were looking for a door at cell (4,3) in the spreadsheet, we would actually be checking position 
+(3,2) in the multidimensional array.  It was a bit confusing when we first approached the problem, but
+after walking through the UML and realizing what getters we were missing, it came much easier.

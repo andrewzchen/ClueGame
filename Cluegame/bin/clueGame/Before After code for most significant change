@@ -1,0 +1,36 @@
+Before:
+Scanner sc2 = new Scanner(new File(roomConfigFile));
+		while (sc2.hasNextLine()) {
+			String in = sc2.nextLine();
+			String array1[] = in.split(", ");
+			char key = array1[0].charAt(0);
+			legend.put(key, array1[1]);
+			String temp = array1[2].replaceAll("\\s+","");
+			if (temp.equals("Card") || temp.equals("Other")) {
+			}
+			else {
+				throw new BadConfigFormatException("There is a room type in the config file that is not Card or Other");
+			}
+		}
+		sc2.close();
+After:
+Scanner sc2 = new Scanner(new File(roomConfigFile));
+		try {
+		while (sc2.hasNextLine()) {
+			String in = sc2.nextLine();
+			String array1[] = in.split(", ");
+			char key = array1[0].charAt(0);
+			legend.put(key, array1[1]);
+			String temp = array1[2].replaceAll("\\s+","");
+			if (temp.equals("Card") || temp.equals("Other")) {
+			}
+			else {
+				throw new BadConfigFormatException("There is a room type in the config file that is not Card or Other");
+			}
+		}
+		}
+		finally {
+			if (sc2 != null) {
+		sc2.close();
+			}
+		}

@@ -1,0 +1,11 @@
+T, TrapHouse, Card
+K, Kitchen, Card 
+B, Ballroom, Card
+M, Movie, Card
+P, Pool, Card 
+S, Study, Card
+Y, Bedroom, Card 
+L, Living room, Card 
+H, Hall, Card 
+X, Closet, Other 
+W, Walkway, Other

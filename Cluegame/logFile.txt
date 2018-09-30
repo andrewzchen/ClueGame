@@ -1,0 +1,1 @@
+Error: There is a room type in the config file that is not Card or Other

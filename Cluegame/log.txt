@@ -1,0 +1,97 @@
+commit 8c3b552abd7247cbc8b95f2f044344cbb898b50b
+Author: jmcgrath33 <jmcgrath@mines.edu>
+Date:   Mon Apr 2 21:38:48 2018 -0600
+
+    Added descriptions to two ambiguous variables CELL_SHIFT and boardSetup
+
+commit 254ad0195b1b8ee0a62b6b81e5ac66f31056b78c
+Author: Andrew Chen <andrewchen@mines.edu>
+Date:   Mon Apr 2 21:30:44 2018 -0600
+
+    Fixed resource leaks by properly closing scanners using try/finally block
+
+commit a8a16f2bef8dabe215f220f0ce9a12774f05d7fc
+Merge: 0c112df 3595b52
+Author: jmcgrath33 <jmcgrath@mines.edu>
+Date:   Mon Apr 2 21:00:47 2018 -0600
+
+    Merge branch 'master' of https://github.com/jmcgrath33/Cluegame
+    
+    Created a detailed explanation of the calcTargets method.  Gives a
+    better understanding of the method, seeing as this is one of the most
+    important methods to the project.
+
+commit 0c112df13bd476e509db0946a8a77dbc6d31ab0d
+Author: jmcgrath33 <jmcgrath@mines.edu>
+Date:   Mon Apr 2 20:59:17 2018 -0600
+
+    Added a detailed explanation of the calcTargets method which is one of the shorter, but most important methods to the project
+
+commit 3595b523ad0ca18111ef590e0b3936ae5bf85767
+Author: Andrew Chen <andrewchen@mines.edu>
+Date:   Mon Apr 2 20:55:59 2018 -0600
+
+    Deleted commented out code to make code more concise
+
+commit dd0976231ce225d62ace6d9a5a2de74deeb621d2
+Author: Andrew Chen <andrewchen@mines.edu>
+Date:   Mon Apr 2 20:36:38 2018 -0600
+
+    Changed enum call from object to class, so that we access the static field in a static way
+
+commit c37c489d5b789d05c82d3ffd574b01690c5a187d
+Author: jmcgrath33 <jmcgrath@mines.edu>
+Date:   Mon Apr 2 20:32:40 2018 -0600
+
+    Created a constant step variable named CELL_SHIFT that will work as the counter for shifting a single cell in any direction.  This is better practice, seeing as the 1 step is and will always be hardcoded
+
+commit 4c59d9a8fe695f258d191e3d4e2c7865741603aa
+Author: jmcgrath33 <jmcgrath@mines.edu>
+Date:   Mon Apr 2 20:24:49 2018 -0600
+
+    Removed the .collections library, because it was not used
+
+commit 2299eebc749fe17ac6412e641af0f69ce4e30540
+Author: Andrew Chen <andrewchen@mines.edu>
+Date:   Mon Apr 2 20:22:47 2018 -0600
+
+    Removed the import of FileReader, which wasn't used
+
+
+Before / After Code Snippets: 
+Before:
+Scanner sc2 = new Scanner(new File(roomConfigFile));
+		while (sc2.hasNextLine()) {
+			String in = sc2.nextLine();
+			String array1[] = in.split(", ");
+			char key = array1[0].charAt(0);
+			legend.put(key, array1[1]);
+			String temp = array1[2].replaceAll("\\s+","");
+			if (temp.equals("Card") || temp.equals("Other")) {
+			}
+			else {
+				throw new BadConfigFormatException("There is a room type in the config file that is not Card or Other");
+			}
+		}
+		sc2.close();
+After:
+Scanner sc2 = new Scanner(new File(roomConfigFile));
+		try {
+		while (sc2.hasNextLine()) {
+			String in = sc2.nextLine();
+			String array1[] = in.split(", ");
+			char key = array1[0].charAt(0);
+			legend.put(key, array1[1]);
+			String temp = array1[2].replaceAll("\\s+","");
+			if (temp.equals("Card") || temp.equals("Other")) {
+			}
+			else {
+				throw new BadConfigFormatException("There is a room type in the config file that is not Card or Other");
+			}
+		}
+		}
+		finally {
+			if (sc2 != null) {
+		sc2.close();
+			}
+		}

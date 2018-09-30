@@ -1,0 +1,7 @@
+Jeremy Lin,green,5,11,Human
+Lil Peep,blue,13,2,Computer
+Bruce Lee,orange,13,8,Computer
+Beyonce Knowles, magenta,8,7,Computer
+Emma Watson,red,0,5,Computer
+Selena Gomez,pink,8,16,Computer 
+21 Savage,black,6,3,Computer
